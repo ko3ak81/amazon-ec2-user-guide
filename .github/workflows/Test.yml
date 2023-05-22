@@ -6,6 +6,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+     NAME: ${{ env.NAME }}
+
     strategy:
       matrix:
         node-version: [14]
@@ -14,24 +19,16 @@ jobs:
     steps:
           # Add a step here to output the branch name
       - name: Extract branch name
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         shell: bash
         run: echo "branch=$(echo ${GITHUB_REF#refs/heads/})" 
         id: extract_branch
 
       - name: Keys
-        env:
-          AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
-          AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
         shell: bash
         run: echo "Keys=$(echo ${{ secrets.AWS_ACCESS_KEY_ID }}/${{ secrets.AWS_SECRET_ACCESS_KEY }})" 
         id: Keys        
 
       - name: Name
-        env:
-          NAME: ${{ env.NAME }}
         shell: bash
         run: echo "Name=$(echo $NAME)" 
         id: Name
