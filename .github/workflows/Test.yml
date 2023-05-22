@@ -6,10 +6,13 @@ on:
 
 
 jobs:
+
+
   build:
     runs-on: ubuntu-latest
-    
-
+    environment: 
+      name: prod
+      
     strategy:
       matrix:
         node-version: [14]
@@ -29,7 +32,7 @@ jobs:
 
       - name: Name
         shell: bash
-        run: echo "name=$(echo ${{ env.secrets.NAME }})" 
+        run: echo "name=$(echo ${{ vars.MYNAME }})" 
         id: Name
         
         
