@@ -32,7 +32,7 @@ jobs:
 
       - name: Name
         shell: bash
-        run: echo "name=$(echo ${{ vars.MYNAME }})" 
+        run: echo "name=$(echo ${{ secrets.MYNAME }})" 
         id: Name
         
         
