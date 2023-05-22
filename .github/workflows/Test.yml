@@ -1,4 +1,4 @@
-Name: Actions Test to be removed
+name: Actions Test to be removed
 
 on:
   workflow_dispatch
