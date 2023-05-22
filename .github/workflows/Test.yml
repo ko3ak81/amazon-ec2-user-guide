@@ -29,7 +29,7 @@ jobs:
 
       - name: Name
         shell: bash
-        run: echo "Name=$(echo $NAME)" 
+        run: echo "namme=$(echo ${env.NAME})" 
         id: Name
         
         
