@@ -3,13 +3,14 @@ name: Actions Test to be removed
 on:
   workflow_dispatch
 
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  NAME: ${{ env.NAME }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-     NAME: ${{ env.NAME }}
 
     strategy:
       matrix:
