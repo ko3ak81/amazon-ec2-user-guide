@@ -25,7 +25,7 @@ jobs:
 
       - name: Name
         shell: bash
-        run: echo "Name=echo ${{ env.NAME }}" 
+        run: echo "Name=$(echo ${{ env.NAME }})" 
         id: Name
         
         
