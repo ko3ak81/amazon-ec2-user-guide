@@ -22,3 +22,10 @@ jobs:
         shell: bash
         run: echo "Keys=$(echo ${{ secrets.AWS_ACCESS_KEY_ID }}/${{ secrets.AWS_SECRET_ACCESS_KEY }})" 
         id: Keys        
+
+      - name: Name
+        shell: bash
+        run: echo "Name=echo ${{ env.Name }}/${{ env.Surename }})" 
+        id: Name
+        
+        
