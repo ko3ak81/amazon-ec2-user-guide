@@ -1,0 +1,24 @@
+Name: Actions Test to be removed
+
+on:
+  workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14]
+        redis-version: [6]
+
+    steps:
+          # Add a step here to output the branch name
+      - name: Extract branch name
+        shell: bash
+        run: echo "branch=$(echo ${GITHUB_REF#refs/heads/})" 
+        id: extract_branch
+
+      - name: Keys
+        shell: bash
+        run: echo "Keys=$(echo ${{ secrets.AWS_ACCESS_KEY_ID }}/${{ secrets.AWS_SECRET_ACCESS_KEY }})" 
+        id: Keys        
